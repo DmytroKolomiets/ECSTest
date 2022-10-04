@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 1a6623a0506702c4d96c666710c9426d
+  m_SerializeEntries:
+  - m_GUID: 6f8c552e6082a13419f56a16c3c0fafc
+    m_Address: Assets/Objects/Projectile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a097ff58ce6070248a32d732f71e6128
+    m_Address: Assets/Objects/Capsule.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 388bdefc7aa18cb4097489bb4d3227fa, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e2e6f513e77744c43b457af3cf717a7d, type: 2}
+    - {fileID: 11400000, guid: 98cb26383bdcb2b41b364028fbcfbd30, type: 2}
