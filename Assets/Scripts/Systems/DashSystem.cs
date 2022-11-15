@@ -10,9 +10,9 @@ public partial class DashSystem : SystemBase
     private float time = float.MaxValue;
     protected override void OnUpdate()
     {
-        time += Time.DeltaTime;
-        
-        Entities.ForEach((ref WASD wasd, ref Translation translation, in Rotation rotation) => 
+        time += UnityEngine.Time.deltaTime;
+
+        Entities.ForEach((ref WASD wasd, ref Translation translation, in Rotation rotation) =>
         {
             if (time < 1)
                 return;

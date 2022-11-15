@@ -3,37 +3,17 @@ using Unity.Mathematics;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class WASD_MonoBeh : MonoBehaviour, IConvertGameObjectToEntity
+public class WASD_MonoBeh : MonoBehaviour
 {
-
-    // Add fields to your component here. Remember that:
-    //
-    // * The purpose of this class is to store data for authoring purposes - it is not for use while the game is
-    //   running.
-    // 
-    // * Traditional Unity serialization rules apply: fields must be public or marked with [SerializeField], and
-    //   must be one of the supported types.
-    //
-    // For example,
-    //    public float scale;
-
-
-
-    public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
+    private class MyBaker : Baker<WASD_MonoBeh>
     {
-        // Call methods on 'dstManager' to create runtime components on 'entity' here. Remember that:
-        //
-        // * You can add more than one component to the entity. It's also OK to not add any at all.
-        //
-        // * If you want to create more than one entity from the data in this class, use the 'conversionSystem'
-        //   to do it, instead of adding entities through 'dstManager' directly.
-        //
-        // For example,
-           dstManager.AddComponentData(entity, new WASD());
-        
-        
+        public override void Bake(WASD_MonoBeh authoring)
+        {
+            AddComponent(new WASD());
+        }
     }
 }
+
 public struct WASD : IComponentData
 {
     public bool W;

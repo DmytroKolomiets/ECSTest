@@ -41,7 +41,7 @@ namespace Addressables.System
                 {
                     var newEntity = EntityManager.Instantiate(srcEntity);
 
-                    EntityManager.AddComponent<LocalToParent>(newEntity);
+                    //EntityManager.AddComponent<LocalToParent>(newEntity);
                     EntityManager.AddComponent<Parent>(newEntity);
                     EntityManager.SetComponentData(newEntity, new Parent { Value = entity });
 

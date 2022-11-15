@@ -1,32 +1,42 @@
-using Unity.Collections;
 using Unity.Entities;
-using Unity.Mathematics;
+using Unity.Entities.Serialization;
+using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static UnityEngine.EventSystems.EventTrigger;
 
-public class AssetConfig : MonoBehaviour, IConvertGameObjectToEntity
+#if UNITY_EDITOR
+public class AssetConfig : MonoBehaviour
 {
-    [SerializeField] private ConfigObject[] assetPaths;
-    
-
-
-    public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
+    [SerializeField] private ConfigObject[] prefabs;
+    private class Baker : Baker<AssetConfig>
     {
-        //for (int i = 0; i < assetPaths.Length; i++)
-        //{
-        //    var e = dstManager.CreateEntity(typeof(ReferenceToAssetData));
-        //    dstManager.SetComponentData(e, new ReferenceToAssetData() { Path = assetPaths[i].reference.AssetGUID, Asset = assetPaths[i].Name });
-        //}
-    }
+        public override void Bake(AssetConfig authoring)
+        {
+            var buffer = AddBuffer<PrefabSpawnerBufferElement>();
+            foreach (var item in authoring.prefabs)
+            {              
+                buffer.Add(new PrefabSpawnerBufferElement { Prefab = new EntityPrefabReference(item.GO), Name = item.Name, entity = GetEntity(item.GO) });
+            }
+        }
+    }   
 }
+#endif
 [System.Serializable]
 public class ConfigObject
 {
-    public AssetReference reference;
+    public GameObject GO;
     public AssetObject Name;
+}
+public struct PrefabSpawnerBufferElement : IBufferElementData
+{
+    public EntityPrefabReference Prefab;
+    public AssetObject Name;
+    public Entity entity;
 }
 public enum AssetObject
 {
     FirstSpell,
     SecondSpell
 }
+

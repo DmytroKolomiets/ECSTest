@@ -14,6 +14,7 @@ public partial class InputSystem : SystemBase
     bool isDLast;
     protected override void OnUpdate()
     {
+        
         var w = false;
         var a = false;
         var s = false;
@@ -51,7 +52,7 @@ public partial class InputSystem : SystemBase
         {
             lefMouseButtom = true;
         }
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             rightMouseBottom = true;
         }
@@ -81,7 +82,7 @@ public partial class InputSystem : SystemBase
                 a = false;
         }
         Entities.ForEach((ref WASD wasd) =>
-        {
+        {           
             wasd.W = w;
             wasd.A = a;
             wasd.S = s;

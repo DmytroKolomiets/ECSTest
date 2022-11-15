@@ -24,8 +24,6 @@ public partial class LoadObjectSystem : SystemBase
         settings.ConversionFlags = GameObjectConversionUtility.ConversionFlags.AssignName;
 
         resultMap = new NativeParallelHashMap<int, Entity>(10, Allocator.Persistent);
-
-
     }
 
     protected override void OnDestroy()
@@ -36,6 +34,8 @@ public partial class LoadObjectSystem : SystemBase
 
     protected override void OnUpdate()
     {
+
+
 
         Entities.WithNone<VisualRepresentationLable>().ForEach((Entity entity, in ReferenceToAssetData reference) =>
         {
@@ -62,12 +62,12 @@ public partial class LoadObjectSystem : SystemBase
                         var go = operationHandle.Result;
                         go.name = assetName.ToString();
 
-                        var newSrcEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(operationHandle.Result, settings);
+                        //var newSrcEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(operationHandle.Result, settings);
 
-                        EntityManager.AddComponent<LocalToParent>(newSrcEntity);
-                        EntityManager.AddComponent<Parent>(newSrcEntity);
+                        //EntityManager.AddComponent<LocalToParent>(newSrcEntity);
+                        //EntityManager.AddComponent<Parent>(newSrcEntity);
 
-                        resultMap.Add((int)assetName, newSrcEntity);
+                        //resultMap.Add((int)assetName, newSrcEntity);
                     }
                     else
                     {
